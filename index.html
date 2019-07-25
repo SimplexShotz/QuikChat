@@ -6,9 +6,12 @@
       #messages {
         width: 100%;
       }
+      * {
+        font-family: Helvetica;
+      }
       p {
         font-size: 12pt;
-        line-height: 24pt;
+        line-height: 0pt;
         margin: 0px;
       }
       .message-container {
@@ -20,12 +23,14 @@
       .message-other {
         padding: 10px;
         background-color: rgb(50, 200, 225);
+        color: rgb(255, 255, 255);
         float: left;
         border-radius: 10px;
       }
       .message-you {
         padding: 10px;
         background-color: rgb(240, 240, 240);
+        color: rgb(0, 0, 0);
         float: right;
         border-radius: 10px;
       }
@@ -65,7 +70,7 @@
       
       var messages = [];
       
-      var user = prompt("Enter a username. [V0.8]") || "Anonymous";
+      var user = prompt("Enter a username. [V0.9]") || "Anonymous";
       function send() {
         var content = document.getElementById("send").value;
         messages.push({
@@ -82,15 +87,16 @@
             var msgtxt = "";
             for (var i = 0; i < messages.length; i++) {
               if (messages[i].user === user) {
-                msgtxt += "<div class='message-container'><p class='username-you'>You</p><div class='message-you'><p>" + messages[i].content + "</p></div><div class='clear'></div></div><br>";
+                msgtxt += "<div class='message-container'><p class='username-you'>You</p><br><div class='message-you'><p>" + messages[i].content + "</p></div><div class='clear'></div></div><br>";
               } else {
-                msgtxt += "<div class='message-container'><p class='username-other'>" + messages[i].user + "</p><div class='message-other'><p>" + messages[i].content + "</p><br></div><div class='clear'></div></div><br>";
+                msgtxt += "<div class='message-container'><p class='username-other'>" + messages[i].user + "</p><br><div class='message-other'><p>" + messages[i].content + "</p><br></div><div class='clear'></div></div><br>";
               }
             }
             document.getElementById("messages").innerHTML = msgtxt;
           }
         });
       }
+      update();
       setInterval(function() {
         update();
       }, 1000);
