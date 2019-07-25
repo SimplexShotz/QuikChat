@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    <style>
+    
+    </style>
+    <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-app.js"></script>
+  </head>
+  <body>
+    <div id="messages"></div>
+    <input id="send"><button onclick="send()"></button>
+    <script>
+      // Firebase config
+      var firebaseConfig = {
+        apiKey: "AIzaSyCY0Z8tEKD7Cdf-0WTFY85vDUIbOxUAsek",
+        authDomain: "quikchat-405df.firebaseapp.com",
+        databaseURL: "https://quikchat-405df.firebaseio.com",
+        projectId: "quikchat-405df",
+        storageBucket: "",
+        messagingSenderId: "612021751266",
+        appId: "1:612021751266:web:00de577c52577c42"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      var database = firebase.database();
+      var ref = {
+        messages: database.ref("messages")
+      };
+      var messages = [];
+      
+      var user = prompt("Enter a username");
+      function send() {
+        var content = document.getElementById("send").value;
+        messages.push({
+          user: user,
+          content: content
+        });
+        ref.messages.set(messages);
+      }
+      function update() {
+        ref.messages.once("value", function(data) {
+          var d = data.val();
+          messages = d;
+          var msgtxt = "";
+          for (var i = 0; i < messages.length; i++) {
+            if (messages[i].user === user) {
+              msgtxt += "<div style='float: left'><p style='color: rgb(200, 200, 200)'>You</p><br><p>" + messages[i].content + "</p></div>";
+            } else {
+              msgtxt += "<div style='float: left'><p style='color: rgb(200, 200, 200)'>" + messages[i].user + "</p><br><p>" + messages[i].content + "</p></div>";
+            }
+          }
+          document.getElementById("messages").innerHTML = msgtxt;
+        });
+      }
+    </script>
+  </body>
+</html>
