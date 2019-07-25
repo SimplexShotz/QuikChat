@@ -34,7 +34,7 @@
         font-size: 16pt;
       }
       .message-you {
-        padding: 10px;
+        padding: 10px 0px 5px 0px;
         background-color: rgb(240, 240, 240);
         color: rgb(0, 0, 0);
         float: right;
@@ -82,7 +82,7 @@
       
       var messages = [];
       
-      var user = prompt("Enter a username. [V0.1]") || "Anonymous";
+      var user = prompt("Enter a username. [V0.2]") || "Anonymous";
       function send() {
         var content = document.getElementById("send").value;
         messages.push({
