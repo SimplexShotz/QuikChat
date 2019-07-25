@@ -11,6 +11,9 @@
         line-height: 24pt;
         margin: 0px;
       }
+      .message-container {
+        width: 100%;
+      }
       .message-other {
         padding: 10px;
         background-color: rgb(50, 200, 225);
@@ -76,9 +79,9 @@
             var msgtxt = "";
             for (var i = 0; i < messages.length; i++) {
               if (messages[i].user === user) {
-                msgtxt += "<p class='username-you'>You</p><div class='message-you'><p>" + messages[i].content + "</p></div><br>";
+                msgtxt += "<div class='message-container'><p class='username-you'>You</p><div class='message-you'><p>" + messages[i].content + "</p></div></div><br>";
               } else {
-                msgtxt += "<p class='username-other'>" + messages[i].user + "</p><div class='message-other'><p>" + messages[i].content + "</p><br></div>";
+                msgtxt += "<div class='message-container'><p class='username-other'>" + messages[i].user + "</p><div class='message-other'><p>" + messages[i].content + "</p><br></div></div><br>";
               }
             }
             document.getElementById("messages").innerHTML = msgtxt;
