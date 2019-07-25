@@ -92,7 +92,7 @@
       
       var messages = [];
       
-      var user = prompt("Enter a username. [V1]") || "Anonymous";
+      var user = prompt("Enter a username [V1]") || "Anonymous";
       function send() {
         var content = document.getElementById("send").value;
         messages.push({
@@ -131,6 +131,7 @@
             document.getElementById("messages").innerHTML = msgtxt;
           } else {
             messages = [];
+            document.getElementById("messages").innerHTML = "";
           }
         });
       }
