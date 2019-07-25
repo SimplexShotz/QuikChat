@@ -10,9 +10,9 @@
         font-family: Helvetica;
       }
       p {
-        font-size: 12pt;
         line-height: 0pt;
         margin: 0px;
+        padding: 0px;
       }
       .message-container {
         width: 100%;
@@ -26,6 +26,7 @@
         color: rgb(255, 255, 255);
         float: left;
         border-radius: 10px;
+        font-size: 20pt;
       }
       .message-you {
         padding: 10px;
@@ -33,6 +34,7 @@
         color: rgb(0, 0, 0);
         float: right;
         border-radius: 10px;
+        font-size: 20pt;
       }
       .username-other {
         color: rgb(127, 127, 127);
@@ -89,7 +91,7 @@
               if (messages[i].user === user) {
                 msgtxt += "<div class='message-container'><p class='username-you'>You</p><br><div class='message-you'><p>" + messages[i].content + "</p></div><div class='clear'></div></div><br>";
               } else {
-                msgtxt += "<div class='message-container'><p class='username-other'>" + messages[i].user + "</p><br><div class='message-other'><p>" + messages[i].content + "</p><br></div><div class='clear'></div></div><br>";
+                msgtxt += "<div class='message-container'>" + ((i > 0 && messages[i - 1].user !== messages[i].user) ? "<p class='username-other'>" + messages[i].user + "</p><br>" : "") + "<div class='message-other'><p>" + messages[i].content + "</p><br></div><div class='clear'></div></div><br>";
               }
             }
             document.getElementById("messages").innerHTML = msgtxt;
