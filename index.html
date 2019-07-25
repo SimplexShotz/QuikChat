@@ -41,6 +41,7 @@
       var ref = {
         messages: database.ref("messages")
       };
+      
       var messages = [];
       
       var user = prompt("Enter a username.");
@@ -55,7 +56,9 @@
       function update() {
         ref.messages.once("value", function(data) {
           var d = data.val();
-          messages = d;
+          if (typeof d === "object") {
+            messages = d;
+          }
           var msgtxt = "";
           for (var i = 0; i < messages.length; i++) {
             if (messages[i].user === user) {
