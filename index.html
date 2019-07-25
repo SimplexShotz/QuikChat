@@ -44,7 +44,7 @@
       
       var messages = [];
       
-      var user = prompt("Enter a username. [V0.4]");
+      var user = prompt("Enter a username. [V0.5]");
       function send() {
         var content = document.getElementById("send").value;
         alert(content);
@@ -59,18 +59,18 @@
         ref.messages.once("value", function(data) {
           var d = data.val();
           alert(d);
-          if (typeof d === "object") {
+          if (d !== null) {
             messages = d;
-          }
-          var msgtxt = "";
-          for (var i = 0; i < messages.length; i++) {
-            if (messages[i].user === user) {
-              msgtxt += "<p class='username'>You</p><div class='message-you'><p>" + messages[i].content + "</p></div><br>";
-            } else {
-              msgtxt += "<p class='username'>" + messages[i].user + "</p><div class='message-other'><p>" + messages[i].content + "</p><br></div>";
+            var msgtxt = "";
+            for (var i = 0; i < messages.length; i++) {
+              if (messages[i].user === user) {
+                msgtxt += "<p class='username'>You</p><div class='message-you'><p>" + messages[i].content + "</p></div><br>";
+              } else {
+                msgtxt += "<p class='username'>" + messages[i].user + "</p><div class='message-other'><p>" + messages[i].content + "</p><br></div>";
+              }
             }
+            document.getElementById("messages").innerHTML = msgtxt;
           }
-          document.getElementById("messages").innerHTML = msgtxt;
         });
       }
       setInterval(function() {
