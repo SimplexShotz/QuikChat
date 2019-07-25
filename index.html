@@ -77,12 +77,13 @@
       
       var messages = [];
       
-      var user = prompt("Enter a username. [V0.5]") || "Anonymous";
+      var user = prompt("Enter a username. [V0.6]") || "Anonymous";
       function send() {
         var content = document.getElementById("send").value;
         messages.push({
           user: user,
-          content: content
+          content: content,
+          date: new Date().getTime()
         });
         ref.messages.set(messages);
       }
@@ -91,6 +92,14 @@
           var d = data.val();
           if (d !== null) {
             messages = d;
+            var d = new Date();
+            for (var i = 0; i < messages.length; i++) {
+              if (d - messages[i].date > 10000) {
+                ref.messages.child(i).remove();
+                messages.splice(i, 1);
+                i--;
+              }
+            }
             var msgtxt = "";
             for (var i = 0; i < messages.length; i++) {
               if (messages[i].user === user) {
@@ -106,7 +115,7 @@
       update();
       setInterval(function() {
         update();
-      }, 1000);
+      }, 1);
     </script>
   </body>
 </html>
