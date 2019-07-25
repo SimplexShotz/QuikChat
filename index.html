@@ -48,11 +48,13 @@
       var user = prompt("Enter a username. [V0.2]");
       function send() {
         var content = document.getElementById("send").value;
+        alert(content);
         messages.push({
           user: user,
           content: content
         });
         ref.messages.set(messages);
+        alert(messages);
       }
       function update() {
         ref.messages.once("value", function(data) {
