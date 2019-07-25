@@ -77,7 +77,7 @@
       
       var messages = [];
       
-      var user = prompt("Enter a username. [V0.7]") || "Anonymous";
+      var user = prompt("Enter a username. [V0.8]") || "Anonymous";
       function send() {
         var content = document.getElementById("send").value;
         messages.push({
@@ -98,8 +98,8 @@
                 // ref.messages.child(i).remove();
                 for (var j = i + 1; j < messages.length; j++) {
                   ref.messages.child(j - 1).set(messages[j]);
+                  ref.messages.child(j).remove();
                 }
-                ref.messages.child(j).remove();
                 messages.splice(i, 1);
                 i--;
               }
