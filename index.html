@@ -6,6 +6,18 @@
       #messages {
         width: 100%;
       }
+      .message-other {
+        background-color: rgb(50, 200, 225);
+        float: left;
+      }
+      .message-you {
+        background-color: rgb(127, 127, 127);
+        float: right;
+      }
+      .username {
+        color: rgb(127, 127, 127);
+        font-size: 12pt;
+      }
     </style>
     <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase.js"></script>
   </head>
@@ -47,9 +59,9 @@
           var msgtxt = "";
           for (var i = 0; i < messages.length; i++) {
             if (messages[i].user === user) {
-              msgtxt += "<div style='float: left'><p style='color: rgb(200, 200, 200)'>You</p><p>" + messages[i].content + "</p></div><br>";
+              msgtxt += "<p class='username'>You</p><div class='message-you'><p>" + messages[i].content + "</p></div><br>";
             } else {
-              msgtxt += "<div style='float: left'><p style='color: rgb(200, 200, 200)'>" + messages[i].user + "</p><p>" + messages[i].content + "</p><br></div>";
+              msgtxt += "<p class='username'>" + messages[i].user + "</p><div class='message-other'><p>" + messages[i].content + "</p><br></div>";
             }
           }
           document.getElementById("messages").innerHTML = msgtxt;
