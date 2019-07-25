@@ -14,6 +14,9 @@
       .message-container {
         width: 100%;
       }
+      .clear {
+        clear: both;
+      }
       .message-other {
         padding: 10px;
         background-color: rgb(50, 200, 225);
@@ -62,7 +65,7 @@
       
       var messages = [];
       
-      var user = prompt("Enter a username. [V0.7]");
+      var user = prompt("Enter a username. [V0.8]") || "Anonymous";
       function send() {
         var content = document.getElementById("send").value;
         messages.push({
@@ -79,9 +82,9 @@
             var msgtxt = "";
             for (var i = 0; i < messages.length; i++) {
               if (messages[i].user === user) {
-                msgtxt += "<div class='message-container'><p class='username-you'>You</p><div class='message-you'><p>" + messages[i].content + "</p></div></div><br>";
+                msgtxt += "<div class='message-container'><p class='username-you'>You</p><div class='message-you'><p>" + messages[i].content + "</p></div><div class='clear'></div></div><br>";
               } else {
-                msgtxt += "<div class='message-container'><p class='username-other'>" + messages[i].user + "</p><div class='message-other'><p>" + messages[i].content + "</p><br></div></div><br>";
+                msgtxt += "<div class='message-container'><p class='username-other'>" + messages[i].user + "</p><div class='message-other'><p>" + messages[i].content + "</p><br></div><div class='clear'></div></div><br>";
               }
             }
             document.getElementById("messages").innerHTML = msgtxt;
