@@ -25,6 +25,7 @@
     <div id="messages"></div>
     <input id="send"><button onclick="send()">Send</button>
     <script>
+      try {
       // Firebase config
       var firebaseConfig = {
         apiKey: "AIzaSyCY0Z8tEKD7Cdf-0WTFY85vDUIbOxUAsek",
@@ -44,7 +45,7 @@
       
       var messages = [];
       
-      var user = prompt("Enter a username. [V0.1]");
+      var user = prompt("Enter a username. [V0.2]");
       function send() {
         var content = document.getElementById("send").value;
         messages.push({
@@ -73,6 +74,9 @@
       setInterval(function() {
         update();
       }, 1000);
+      } catch(e) {
+        alert(e);
+      }
     </script>
   </body>
 </html>
