@@ -45,9 +45,9 @@
           var msgtxt = "";
           for (var i = 0; i < messages.length; i++) {
             if (messages[i].user === user) {
-              msgtxt += "<div style='float: left'><p style='color: rgb(200, 200, 200)'>You</p><br><p>" + messages[i].content + "</p></div>";
+              msgtxt += "<div style='float: left'><p style='color: rgb(200, 200, 200)'>You</p><p>" + messages[i].content + "</p></div><br>";
             } else {
-              msgtxt += "<div style='float: left'><p style='color: rgb(200, 200, 200)'>" + messages[i].user + "</p><br><p>" + messages[i].content + "</p></div>";
+              msgtxt += "<div style='float: left'><p style='color: rgb(200, 200, 200)'>" + messages[i].user + "</p><p>" + messages[i].content + "</p><br></div>";
             }
           }
           document.getElementById("messages").innerHTML = msgtxt;
