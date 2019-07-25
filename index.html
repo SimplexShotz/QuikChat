@@ -6,17 +6,32 @@
       #messages {
         width: 100%;
       }
+      p {
+        font-size: 12pt;
+        line-height: 24pt;
+        margin: 0px;
+      }
       .message-other {
+        padding: 10px;
         background-color: rgb(50, 200, 225);
         float: left;
+        border-radius: 10px;
       }
       .message-you {
-        background-color: rgb(127, 127, 127);
+        padding: 10px;
+        background-color: rgb(240, 240, 240);
         float: right;
+        border-radius: 10px;
       }
-      .username {
+      .username-other {
         color: rgb(127, 127, 127);
         font-size: 12pt;
+        float: left;
+      }
+      .username-you {
+        color: rgb(127, 127, 127);
+        font-size: 12pt;
+        float: right;
       }
     </style>
     <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase.js"></script>
@@ -47,26 +62,23 @@
       var user = prompt("Enter a username. [V0.6]");
       function send() {
         var content = document.getElementById("send").value;
-        alert(content);
         messages.push({
           user: user,
           content: content
         });
         ref.messages.set(messages);
-        alert(messages);
       }
       function update() {
         ref.messages.once("value", function(data) {
           var d = data.val();
           if (d !== null) {
-            alert(d);
             messages = d;
             var msgtxt = "";
             for (var i = 0; i < messages.length; i++) {
               if (messages[i].user === user) {
-                msgtxt += "<p class='username'>You</p><div class='message-you'><p>" + messages[i].content + "</p></div><br>";
+                msgtxt += "<p class='username-you'>You</p><div class='message-you'><p>" + messages[i].content + "</p></div><br>";
               } else {
-                msgtxt += "<p class='username'>" + messages[i].user + "</p><div class='message-other'><p>" + messages[i].content + "</p><br></div>";
+                msgtxt += "<p class='username-other'>" + messages[i].user + "</p><div class='message-other'><p>" + messages[i].content + "</p><br></div>";
               }
             }
             document.getElementById("messages").innerHTML = msgtxt;
