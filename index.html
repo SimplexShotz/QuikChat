@@ -95,7 +95,7 @@
             var d = new Date();
             for (var i = 0; i < messages.length; i++) {
               if (d - messages[i].date > 10000) {
-                // ref.messages.child(i).remove();
+                ref.messages.child(i).remove();
                 for (var j = i + 1; j < messages.length; j++) {
                   ref.messages.child(j - 1).set(messages[j]);
                   ref.messages.child(j).remove();
