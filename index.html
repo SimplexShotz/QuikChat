@@ -44,7 +44,7 @@
       
       var messages = [];
       
-      var user = prompt("Enter a username. [V0.5]");
+      var user = prompt("Enter a username. [V0.6]");
       function send() {
         var content = document.getElementById("send").value;
         alert(content);
@@ -58,8 +58,8 @@
       function update() {
         ref.messages.once("value", function(data) {
           var d = data.val();
-          alert(d);
           if (d !== null) {
+            alert(d);
             messages = d;
             var msgtxt = "";
             for (var i = 0; i < messages.length; i++) {
