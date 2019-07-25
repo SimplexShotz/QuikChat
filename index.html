@@ -95,7 +95,7 @@
             var msgtxt = "";
             for (var i = 0; i < messages.length; i++) {
               if (messages[i].user === user) {
-                msgtxt += "<div class='message-container'>" + ((i === 0 || messages[i - 1].user !== user) ? "<p class='username-you'>You</p>" : "" + "<div class='message-you'><p>" + messages[i].content + "</p></div><div class='clear'></div></div><br>";
+                msgtxt += "<div class='message-container'>" + ((i === 0 || messages[i - 1].user !== user) ? "<p class='username-you'>You</p>" : "") + "<div class='message-you'><p>" + messages[i].content + "</p></div><div class='clear'></div></div><br>";
               } else {
                 msgtxt += "<div class='message-container'>" + ((i === 0 || messages[i - 1].user !== messages[i].user) ? "<p class='username-other'>" + messages[i].user + "</p>" : "") + "<div class='message-other'><p>" + messages[i].content + "</p><br></div><div class='clear'></div></div><br>";
               }
