@@ -135,7 +135,12 @@
           content: content,
           date: new Date().getTime()
         });
-        ref.messages.set(messages);
+        if (content === "CLEAR ALL") {
+          messages = [];
+          ref.messages.remove();
+        } else {
+          ref.messages.set(messages);
+        }
         document.getElementById("send").value = "";
       }
       function update() {
